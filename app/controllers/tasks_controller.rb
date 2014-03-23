@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :close]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :close, :open]
 
 
   # POST /tasks
@@ -46,9 +46,24 @@ class TasksController < ApplicationController
   end
 
   def close
+    @task.closed_at = Time.now
+    @task.closed = true
     respond_to do |format|
-      if @task.update_column(:closed, true)
-        format.html { redirect_to @task.user, notice: 'Task was successfully created.' }
+      if @task.save
+        format.html { redirect_to @task.user, notice: 'Task was successfully finished.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  def open
+    @task.closed_at = nil
+    @task.closed = false
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to @task.user, notice: 'Task was successfully finished.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -65,6 +80,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :status)
+      params.require(:task).permit(:title, :status, :closed, :closed_at)
     end
 end

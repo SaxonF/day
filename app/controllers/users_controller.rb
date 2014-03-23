@@ -14,8 +14,10 @@ class UsersController < ApplicationController
     @task  = set_user.tasks.build
     if params[:today].nil?
       @today = Date.today
+    else
+      @today = params[:today]
     end
-    @tasks = set_user.tasks.today
+      @tasks = set_user.tasks.today(@today)
   end
 
   # GET /users/new

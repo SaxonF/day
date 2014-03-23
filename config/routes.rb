@@ -5,6 +5,7 @@ Day::Application.routes.draw do
     resources :tasks, only: [:create, :destroy, :update] do
       member do
         patch :close
+        patch :open
       end
     end
   end
