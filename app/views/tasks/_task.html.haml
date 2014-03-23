@@ -1,3 +1,4 @@
 %li
 	=task.title
 	= link_to 'End now', close_user_task_path(@user, task), method: :patch
+	= link_to "delete", user_task_path(@user, task), method: :delete, data: { confirm: "You sure?" }, title: task.title
