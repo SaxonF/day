@@ -10,12 +10,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = set_user
     @task  = set_user.tasks.build
-    if params[:today].nil?
+    if params[:day].nil?
       @today = Date.today
     else
-      @today = params[:today]
+      @today = Date.parse(params[:day])
     end
       @tasks = set_user.tasks.today(@today)
   end

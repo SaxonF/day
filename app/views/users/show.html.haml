@@ -1,10 +1,6 @@
-%p#notice= notice
-%p
-  %strong Name:
-  = @user.name
-%p
-  %strong Email:
-  = @user.email
+%h2.yesterday.day= link_to @today.yesterday.strftime("%A"), user_path(@user, day: @today.yesterday)
+%h1= @today.strftime("%A")
+%h2.tomorrow.day= link_to @today.tomorrow.strftime("%A"), user_path(@user, day: @today.tomorrow)
 %ol.microposts
   = render @tasks
 = render '/shared/task_form'
