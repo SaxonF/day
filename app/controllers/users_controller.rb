@@ -12,7 +12,10 @@ class UsersController < ApplicationController
   def show
     @user = set_user
     @task  = set_user.tasks.build
-    @tasks = set_user.tasks
+    if params[:today].nil?
+      @today = Date.today
+    end
+    @tasks = set_user.tasks.today
   end
 
   # GET /users/new

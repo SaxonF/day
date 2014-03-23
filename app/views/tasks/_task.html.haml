@@ -1,2 +1,3 @@
 %li
 	=task.title
+	= link_to 'End now', close_user_task_path(@user, task), method: :patch

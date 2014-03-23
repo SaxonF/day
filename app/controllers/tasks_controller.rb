@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :close]
 
   # GET /tasks
   # GET /tasks.json
@@ -61,6 +61,18 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tasks_url }
       format.json { head :no_content }
+    end
+  end
+
+  def close
+    respond_to do |format|
+      if @task.update_column(:closed, true)
+        format.html { redirect_to @task, notice: 'Task was successfully closed.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
     end
   end
 

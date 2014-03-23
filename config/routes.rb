@@ -2,7 +2,11 @@ Day::Application.routes.draw do
   root 'site#index'
 
   resources :users do
-    resources :tasks, only: [:create, :destroy]
+    resources :tasks, only: [:create, :destroy] do
+      member do
+        patch :close
+      end
+    end
   end
 
 
