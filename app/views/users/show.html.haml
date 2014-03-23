@@ -1,0 +1,12 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @user.name
+%p
+  %strong Email:
+  = @user.email
+%ol.microposts
+  = render @tasks
+= render '/shared/task_form'
+= link_to 'Edit', edit_user_path(@user)
+#{link_to 'Back', users_path}

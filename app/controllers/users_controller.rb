@@ -10,6 +10,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = set_user
+    @task  = set_user.tasks.build
+    @tasks = set_user.tasks
   end
 
   # GET /users/new
