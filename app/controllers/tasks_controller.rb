@@ -5,14 +5,14 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = User.find(params[:user_id]).tasks.build(task_params)
+    @task = User.find_by_name(params[:user_id]).tasks.build(task_params)
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task.user, notice: 'Task was successfully created.' }
         format.json { render action: 'show', status: :created, location: @task }
       else
         format.html { 
-          @user = User.find(params[:user_id])
+          @user = User.find_by_name(params[:user_id])
           @tasks = @user.tasks
           render 'users/show' 
         }
