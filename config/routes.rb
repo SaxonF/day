@@ -1,4 +1,5 @@
 Day::Application.routes.draw do
+  get "site/index"
   resources :tasks
 
   resources :users
