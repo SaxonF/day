@@ -67,7 +67,7 @@ class TasksController < ApplicationController
   def close
     respond_to do |format|
       if @task.update_column(:closed, true)
-        format.html { redirect_to @task, notice: 'Task was successfully closed.' }
+        format.html { redirect_to @task.user, notice: 'Task was successfully created.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
