@@ -30,7 +30,11 @@ class TasksController < ApplicationController
         format.html { redirect_to @task.user, notice: 'Task was successfully created.' }
         format.json { render action: 'show', status: :created, location: @task }
       else
-        format.html { redirect_to @task.user, notice: 'Task title was empty' }
+        format.html { 
+          @user = User.find(params[:user_id])
+          @tasks = @user.tasks
+          render 'users/show' 
+        }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
