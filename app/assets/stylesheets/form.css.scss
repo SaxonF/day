@@ -1,0 +1,36 @@
+form{
+	::-webkit-input-placeholder {
+	   color: #ccc !important;
+	}
+
+	:-moz-placeholder { /* Firefox 18- */
+	   color: #ccc !important;  
+	}
+
+	::-moz-placeholder {  /* Firefox 19+ */
+	   color: #ccc !important;  
+	}
+
+	:-ms-input-placeholder {  
+	   color: #ccc !important;  
+	}
+}
+
+form.task-form{
+	.field{
+		input[type=text]{
+			display:block;
+			width:100%;
+			padding:1em 0;
+			border:none;
+			text-align: center;
+			font-size:21px;
+			position:relative;
+			font-weight:normal;
+			text-rendering: optimizeLegibility;
+			&:focus{
+				outline:none;
+			}
+		}
+	}
+}

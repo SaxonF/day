@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :start_day, :end_day]
 
   # GET /users
   # GET /users.json
@@ -12,11 +12,11 @@ class UsersController < ApplicationController
   def show
     @task  = set_user.tasks.build
     if params[:day].nil?
-      @today = Date.today
+      @today = Date.current
     else
       @today = Date.parse(params[:day])
     end
-      @tasks = set_user.tasks.today(@today)
+    @tasks = set_user.tasks.today(@today)
   end
 
   # GET /users/new
@@ -65,6 +65,32 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
+    end
+  end
+
+  def start_day
+    @user.day_started = true
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user, notice: 'Day started' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @user, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def end_day
+    @user.day_started = false
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user, notice: 'Day started' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @user, status: :unprocessable_entity }
+      end
     end
   end
 

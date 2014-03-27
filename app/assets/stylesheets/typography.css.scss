@@ -1,0 +1,221 @@
+@mixin body-font {
+	font-family: "Karla", "Helvetica Neue", Helvetica, arial, sans-serif;
+}
+
+@mixin header-font {
+	font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
+}
+
+$linkColor: "#444";
+
+
+/**
+ *
+ * =======================================================================
+	 Base Type
+ * =======================================================================
+ *
+ */
+
+html {
+	font: normal 112.5%/1.65 serif; /* base font size 18px with 1.65 line-height */
+}
+
+body {
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	-o-hyphens: auto;
+	hyphens: auto;
+	word-wrap: break-word;
+	color: #444444;
+	@include body-font;
+}
+
+
+/**
+ *
+ * =======================================================================
+	 Fine Print
+ * =======================================================================
+ */
+
+small {
+	font-size: 65%;
+}
+
+
+/**
+ *
+ * =======================================================================
+	 Headings
+ * =======================================================================
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1.2;
+	margin-top: 0;
+	text-rendering: optimizeLegibility; /*  voodoo to enable ligatures and kerning | https://developer.mozilla.org/en-US/docs/CSS/text-rendering */
+	color: #222222;
+	
+	-webkit-font-smoothing: antialiased !important;
+	font-smooth: always !important;
+	@include body-font;
+}
+
+.tera {
+	font-size: 117px;
+	font-size: 6.5rem; /* 117 / 18 = 6.5 */
+	margin-bottom: 0.25385px;
+	margin-bottom: 0.25385rem;
+}
+
+.giga {
+	font-size: 90px;
+	font-size: 5rem; /* 90 / 18 = 5 */
+	margin-bottom: 0.33px;
+	margin-bottom: 0.33rem;
+}
+
+.mega {
+	font-size: 72px;
+	font-size: 4rem; /* 72 / 18 = 4 */
+	margin-bottom: 0.4125px;
+	margin-bottom: 0.4125rem;
+}
+
+.alpha {
+	font-size: 60px;
+	font-size: 3.33333rem; /* 60 / 18 = 3.3333 */
+	margin-bottom: 0.495px;
+	margin-bottom: 0.495rem;
+}
+
+h1,
+.beta {
+	font-size: 48px;
+	font-size: 2.6667rem; /* 48 / 18 = 2.6667 */
+	margin-bottom: 0.61875px;
+	margin-bottom: 0.61875rem;
+	font-weight:300;
+	@include header-font;
+}
+
+h2,
+.gamma {
+	font-size: 36px;
+	font-size: 2rem; /* 36 / 18 = 2 */
+	margin-bottom: 0.825px;
+	margin-bottom: 0.825rem;
+}
+
+h3,
+.delta {
+	font-size: 24px;
+	font-size: 1.3333333333333333rem; /* 24 / 18 = 1.3333 */
+	margin-bottom: 1.2375px;
+	margin-bottom: 1.2375rem;
+}
+
+h4,
+.epsilon {
+	font-size: 21px;
+	font-size: 1.16667rem; /* 21 / 18 = 1.1667 */
+	margin-bottom: 1.41429px;
+	margin-bottom: 1.41429rem;
+}
+
+h5,
+.zeta {
+	font-size: 18px;
+	font-size: 1rem; /* 18 = 18 × 1 */
+	margin-bottom: 1.65px;
+	margin-bottom: 1.65rem;
+}
+
+
+/**
+ *
+ * =======================================================================
+	 Paragraphs and Indentation
+ * =======================================================================
+ */
+
+p {
+	margin: auto auto 1.5em; /* bottom margin for paragraphs */
+}
+
+p + p {
+	text-indent: 1.5em; /* indent subsequent paragraphs */
+	margin-top: -1.5em; /* no top margin on subsequent paragraphs */
+}
+
+
+/**
+ *
+ * =======================================================================
+	 Hyphens
+ * =======================================================================
+ */
+
+abbr,
+acronym,
+blockquote,
+code,
+dir,
+kbd,
+listing,
+plaintext,
+q,
+samp,
+tt,
+var,
+xmp {
+	/* Accepted values: [ none | manual | auto ] */ /* http://meyerweb.com/eric/thoughts/2012/12/17/where-to-avoid-css-hyphenation */
+	-webkit-hyphens: none; /* Safari 5.1 thru 6, iOS 4.2 thru 6 */
+	-moz-hyphens: none; /* Firefox 16 thru 20 */
+	-ms-hyphens: none; /* IE10 */
+	-o-hyphens: none; /* PRESTO...haha LOL */
+	hyphens: none;	 /* W3C standard */
+}
+
+
+/**
+ *
+ * =======================================================================
+	 Code Blocks
+ * =======================================================================
+ */
+
+pre code {
+	word-wrap: normal;
+	white-space: -moz-pre-wrap;
+	white-space: pre-wrap; /* http://css-tricks.com/almanac/properties/w/whitespace */
+}
+
+pre {
+	white-space: pre;
+}
+
+code {
+	white-space: pre;
+	font-family: monospace;
+}
+
+
+/**
+ *
+ * =======================================================================
+	 Links
+ * =======================================================================
+ */
+
+ a{
+ 	color:$linkColor;
+ 	text-decoration: none;
+ }

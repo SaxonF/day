@@ -2,6 +2,10 @@ Day::Application.routes.draw do
   root 'site#index'
 
   resources :users, :path => '' do
+    member do
+      patch :start_day
+      patch :end_day
+    end
     resources :tasks, only: [:create, :destroy, :update] do
       member do
         patch :close

@@ -1,8 +1,5 @@
-%h2.yesterday.day= link_to @today.yesterday.strftime("%A"), user_path(@user, day: @today.yesterday)
-%h1= @today.strftime("%A")
-%h2.tomorrow.day= link_to @today.tomorrow.strftime("%A"), user_path(@user, day: @today.tomorrow)
-%ol.microposts
-  = render @tasks
-= render '/shared/task_form'
-= link_to 'Edit', edit_user_path(@user)
-#{link_to 'Back', users_path}
+
+- if @user.day_started?
+  = render "checklist"
+- else
+  = render "welcome"

@@ -46,18 +46,29 @@ class TasksController < ApplicationController
   end
 
   def close
-    @task.closed_at = Time.now
-    @task.closed = true
+    
+    Task.transaction do
+      @task.closed_at = Time.zone.now
+      @task.closed = true
+      @task.save!
+      if next_task = @task.next
+        next_task.started_at = Time.zone.now
+        next_task.save!
+      end
+    end
+
     respond_to do |format|
-      if @task.save
-        format.html { redirect_to @task.user, notice: 'Task was successfully finished.' }
-        format.json { head :no_content }
-      else
+      format.html { redirect_to @task.user, notice: 'Task was successfully finished.' }
+      format.json { head :no_content }
+    end
+
+    rescue ActiveRecord::RecordInvalid
+      respond_to do |format|
         format.html { render action: 'edit' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
-    end
   end
+
   def open
     @task.closed_at = nil
     @task.closed = false
@@ -75,7 +86,11 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:id])
+      @task = set_user.tasks.find(params[:id])
+    end
+
+    def set_user
+      @user = User.find_by_name(params[:user_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

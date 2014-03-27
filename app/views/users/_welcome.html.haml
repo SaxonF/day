@@ -1,0 +1,11 @@
+- provide(:body, @user.name) 
+%header.page-header
+  %h1 
+    Hi Saxon, 
+    %span Welcome to Wednesday
+%section.day-setup
+  .container
+    %ul.tasks.epsilon
+      = render @tasks
+    = render '/shared/task_form'
+    = link_to "Start Your Day", start_day_user_path, method: :patch, class: "button"

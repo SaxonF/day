@@ -1,0 +1,28 @@
+.hide{
+	display:none;
+}
+
+/**** Buttons ****/
+
+.button {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: none;
+  white-space: nowrap;
+  padding: 18px 27px;
+  color:white;
+  border-radius: 2px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none; 
+  background:#aaa;
+  font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
+  font-size:16px;
+}

@@ -1,7 +1,7 @@
 class Task < ActiveRecord::Base
 	belongs_to :user
 
-	default_scope -> { order('created_at DESC') }
+	default_scope -> { order('created_at ASC') }
 
 	validates :user_id, presence: true
 	validates :title, presence: true
@@ -9,7 +9,15 @@ class Task < ActiveRecord::Base
 	scope :closed, -> { where(closed: true) }
 
 	def self.today(day = DateTime.now)
-		where("created_at <= ? AND (closed_at > ? OR closed IS false)", day.end_of_day, day.beginning_of_day)
+		where("created_at <= ? AND (closed_at > ? OR closed IS false)", day.end_of_day.utc, day.beginning_of_day.utc)
+	end
+
+	def next
+		user.tasks.where("id > ?", id).order("id ASC").first
+	end
+
+	def prev
+		user.tasks.where("id < ?", id).order("id DESC").first
 	end
 
 end
