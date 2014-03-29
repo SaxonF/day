@@ -5,11 +5,9 @@ $(function(){
         ts = new Date(),
         overTime = false;
 
-  ts.setHours(17,0,0,0);
+    ts.setHours(17,0,0,0);
 
     if((new Date()) > ts){
-        // The new year is here! Count towards something else.
-        // Notice the *1000 at the end - time must be in milliseconds
         ts = -ts;
         overTime = true;
     }
@@ -34,6 +32,10 @@ $(function(){
 
             note.html(message);
         }
+    });
+
+    $(".cover-tasks").flexslider({
+        directionNav: false 
     });
 
 });

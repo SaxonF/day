@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     else
       @today = Date.parse(params[:day])
     end
-    @tasks = set_user.tasks.today(@today)
+    @tasks = set_user.tasks.day(@today)
   end
 
   # GET /users/new

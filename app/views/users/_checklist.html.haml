@@ -1,10 +1,11 @@
-%h2.yesterday.day= link_to @today.yesterday.strftime("%A"), user_path(@user, day: @today.yesterday)
-%h1= @today.strftime("%A")
-#countdown
-%h2.tomorrow.day= link_to @today.tomorrow.strftime("%A"), user_path(@user, day: @today.tomorrow)
-%ol.microposts
-  = render @tasks
-= render '/shared/task_form'
-= link_to 'Edit', edit_user_path(@user)
-#{link_to 'Back', users_path}
-= link_to "End Your Day", end_day_user_path, method: :patch, class: "button"
+- provide(:body, "day") 
+%header.day-header
+  %h1= @today.strftime("%A")
+  #countdown
+  = link_to "End Your Day", end_day_user_path, method: :patch, class: "button hide"
+-#
+  %h2.yesterday.day= link_to @today.yesterday.strftime("%A"), user_path(@user, day: @today.yesterday)
+  %h2.tomorrow.day= link_to @today.tomorrow.strftime("%A"), user_path(@user, day: @today.tomorrow)
+.cover-tasks
+  %ul.tasks.slides
+    = render @tasks

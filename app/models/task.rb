@@ -8,7 +8,7 @@ class Task < ActiveRecord::Base
 
 	scope :closed, -> { where(closed: true) }
 
-	def self.today(day = DateTime.now)
+	def self.day(day = DateTime.now)
 		where("created_at <= ? AND (closed_at > ? OR closed IS false)", day.end_of_day.utc, day.beginning_of_day.utc)
 	end
 

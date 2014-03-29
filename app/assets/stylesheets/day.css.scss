@@ -1,0 +1,86 @@
+body.day{
+	height:100%;
+	.wrap, .page-content{
+		height:100%;
+	}
+}
+
+header.day-header{
+	position:absolute;
+	width:100%;
+	text-align:center;
+	z-index:100;
+	padding-top:30px;
+	h1{
+		font-size:16px;
+		@include body-font;
+	}
+}
+.cover-tasks{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height:100%;
+	height:100%;
+	position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	overflow:hidden;
+	ul.tasks{
+		width:4000px;
+		font-size: 36px;
+		font-size: 2rem;
+		border:none;
+		li{
+			width:100%;
+			float:left;
+			border:none;
+			.timer{
+				width:110px;
+				height:110px;
+				border:6px solid $timerColor;
+				border-radius:110px;
+				margin:0 auto 20px;
+				line-height:98px;
+			}
+			.delete{
+				display:none;
+			}
+			.complete, .open{
+				font-size:18px;
+				color:$timerColor;
+				display:block;
+				&:hover{
+					color:$headerColor;
+				}
+			}
+		}
+	}
+}
+
+.flex-control-nav{
+	position:absolute;
+	width:100%;
+	bottom:30px;
+	left:0;
+	text-align:center;
+	li{
+		display:inline-block;
+		margin:0 5px;
+		a{
+			display:inline-block;
+			width:10px;
+			height:10px;
+			cursor: pointer;
+			background:#666;
+			@include image-background;
+			border-radius:10px;
+			&.flex-active{
+				background:#222;
+			}
+		}
+		
+	}
+}

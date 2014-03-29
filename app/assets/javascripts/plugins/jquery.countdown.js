@@ -37,24 +37,25 @@
 				left = 0;
 			}
 			
-			// Number of days left
+			/* Number of days left
 			d = Math.floor(left / days);
 			updateDuo(0, 1, d);
 			left -= d*days;
-			
+			*/
+
 			// Number of hours left
 			h = Math.floor(left / hours);
-			updateDuo(2, 3, h);
+			updateDuo(0, 1, h);
 			left -= h*hours;
 			
 			// Number of minutes left
 			m = Math.floor(left / minutes);
-			updateDuo(4, 5, m);
+			updateDuo(2, 3, m);
 			left -= m*minutes;
 			
 			// Number of seconds left
 			s = left;
-			updateDuo(6, 7, s);
+			updateDuo(4, 5, s);
 			
 			// Calling an optional user supplied callback
 			options.callback(d, h, m, s);
@@ -77,7 +78,7 @@
 		elem.addClass('countdownHolder');
 
 		// Creating the markup inside the container
-		$.each(['Days','Hours','Minutes','Seconds'],function(i){
+		$.each(['Hours','Minutes','Seconds'],function(i){
 			$('<span class="count'+this+'">').html(
 				'<span class="position">\
 					<span class="digit static">0</span>\

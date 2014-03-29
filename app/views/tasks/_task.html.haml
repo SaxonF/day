@@ -1,7 +1,8 @@
-%li
+%li{class: "#{'closed' if task.closed?}"}
+	.timer
+		- if task.closed?
+			= link_to 'Open', open_user_task_path(@user, task), method: :patch, class: "open"
+		- else
+			= link_to 'Complete', close_user_task_path(@user, task), method: :patch, class: "complete"
 	=task.title
-	- if task.closed?
-		= link_to 'Open', open_user_task_path(@user, task), method: :patch
-	- else
-		= link_to 'Complete', close_user_task_path(@user, task), method: :patch
-	= link_to "delete", user_task_path(@user, task), method: :delete, data: { confirm: "You sure?" }, title: task.title
+	= link_to "delete", user_task_path(@user, task), method: :delete, data: { confirm: "You sure?" }, title: task.title, class: "delete"

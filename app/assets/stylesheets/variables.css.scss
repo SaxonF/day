@@ -1,3 +1,10 @@
 $bodyColor: #444;
 $headerColor : #222;
 $soft : #aaa;
+$timerColor: #14b076;
+
+@mixin image-background {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
