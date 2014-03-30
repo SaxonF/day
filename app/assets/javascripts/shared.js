@@ -1,41 +1,50 @@
 $(function(){
 
 
-    var note = $('#note'),
-        ts = new Date(),
-        overTime = false;
+    var now = new Date(),
+        endofday = new Date();
 
-    ts.setHours(17,0,0,0);
+        endofday.setHours(17,0,0);
+        timeLeft = endofday.getTime() - now.getTime();
 
-    if((new Date()) > ts){
-        ts = -ts;
-        overTime = true;
-    }
+    $('#countdown').runner({
+        autostart: true,
+        countdown: true,
+        startAt: timeLeft,
+        milliseconds: false,
+    });
 
-    $('#countdown').countdown({
-        timestamp   : ts,
-        callback    : function(days, hours, minutes, seconds){
 
-            var message = "";
-
-            message += days + " day" + ( days==1 ? '':'s' ) + ", ";
-            message += hours + " hour" + ( hours==1 ? '':'s' ) + ", ";
-            message += minutes + " minute" + ( minutes==1 ? '':'s' ) + " and ";
-            message += seconds + " second" + ( seconds==1 ? '':'s' ) + " <br />";
-
-            if(overTime){
-                message += "left until the new year!";
+    // setup our task slider
+    $(".cover-tasks").flexslider({
+        directionNav: false,
+        slideshow: false,
+        before: function(slider){
+            $timer = $($(slider).find('li')[slider.currentSlide]);
+            if (!$timer.is(".closed")){
+                $timer.find('.timespent').runner('stop');
             }
-            else {
-                message += "left to 10 days from now!";
+        },
+        after: function(slider){
+            $timer = $($(slider).find('li')[slider.currentSlide]);
+            if (!$timer.is(".closed")){
+                $timer.find('.timespent').runner('start');
             }
-
-            note.html(message);
         }
     });
 
-    $(".cover-tasks").flexslider({
-        directionNav: false 
+    //complete task link
+
+    $(".complete-task").bind("ajax:success", function(evt, data, status, xhr){
+        $task = $(this).parents('li.task');
+        $task.addClass("closed");
+        $task.find('.timespent').runner('stop');
+    });
+
+    $(".open-task").bind("ajax:success", function(evt, data, status, xhr){
+        $task = $(this).parents('li.task');
+        $task.removeClass("closed");
+        $task.find('.timespent').runner('start');
     });
 
 });

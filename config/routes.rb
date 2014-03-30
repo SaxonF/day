@@ -10,6 +10,7 @@ Day::Application.routes.draw do
       member do
         patch :close
         patch :open
+        patch :update_time_spent
       end
     end
   end

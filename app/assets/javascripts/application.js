@@ -16,6 +16,7 @@
 
 //= require plugins/jquery.plugin
 //= require plugins/jquery.countdown
+//= require plugins/jquery.timer
 
 
 //= require_tree .

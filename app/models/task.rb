@@ -12,6 +12,18 @@ class Task < ActiveRecord::Base
 		where("created_at <= ? AND (closed_at > ? OR closed IS false)", day.end_of_day.utc, day.beginning_of_day.utc)
 	end
 
+	def started?
+		!self.started_at.nil?
+	end
+
+	def started=(value)
+	    if value
+	      self.started_at = DateTime.now
+	    else
+	      self.started_at = nil
+	    end
+	  end
+
 	def next
 		user.tasks.where("id > ?", id).order("id ASC").first
 	end

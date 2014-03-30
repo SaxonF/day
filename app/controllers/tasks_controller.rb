@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :close, :open]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :close, :open, :task, :update_time_spent]
 
 
   # POST /tasks
@@ -51,10 +51,6 @@ class TasksController < ApplicationController
       @task.closed_at = Time.zone.now
       @task.closed = true
       @task.save!
-      if next_task = @task.next
-        next_task.started_at = Time.zone.now
-        next_task.save!
-      end
     end
 
     respond_to do |format|
@@ -74,10 +70,24 @@ class TasksController < ApplicationController
     @task.closed = false
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task.user, notice: 'Task was successfully finished.' }
+        format.html { redirect_to @task.user, notice: 'Task was successfully opened.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_time_spent total = params[:total]
+    @task.time_spent = total
+    @task.started = true unless @task.started? 
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to @task.user, notice: 'Task was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'show' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end

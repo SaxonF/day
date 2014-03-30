@@ -44,11 +44,13 @@ header.day-header{
 				border-radius:110px;
 				margin:0 auto 20px;
 				line-height:98px;
+				font-size:18px;
+				color:$timerColor;
 			}
 			.delete{
 				display:none;
 			}
-			.complete, .open{
+			.complete-task, .open-task{
 				font-size:18px;
 				color:$timerColor;
 				display:block;

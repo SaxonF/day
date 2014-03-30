@@ -2,6 +2,9 @@
 %header.day-header
   %h1= @today.strftime("%A")
   #countdown
+    %span.hours
+    %span.minutes
+    %span.seconds
   = link_to "End Your Day", end_day_user_path, method: :patch, class: "button hide"
 -#
   %h2.yesterday.day= link_to @today.yesterday.strftime("%A"), user_path(@user, day: @today.yesterday)

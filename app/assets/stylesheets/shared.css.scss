@@ -1,7 +1,7 @@
 /**** Timer ****/
 
-.countdownHolder{
-  .position{
+#countdown{
+  span.n{
     background:#666;
     color:white;
     display:inline-block;
@@ -9,36 +9,13 @@
     width:26px;
     line-height: 34px;
     text-align: center;
-    margin-right:-1px;
     font-size:14px;
     position: relative;
     border-radius:2px;
-    span{
-      position:absolute;
-      left:0;
-      right:0;
-      top:0;
-      bottom:0;
-      line-height: 34px;
-    }
+    margin:0 1px;
   }
-  .countHours, .countDays, .countMinutes, .countSeconds{
-    display:inline-block;
-    margin:0 14px 0 0;
-    position: relative;
-    &:after{
-      content:":";
-      position:absolute;
-      top:0;
-      bottom:0;
-      right:-9px;
-      line-height: 34px;
-    }
-  }
-  .countSeconds{
-    &:after{
-      content:none;
-    }
+  span.overtime{
+    display:none;
   }
 }
 

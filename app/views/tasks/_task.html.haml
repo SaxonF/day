@@ -1,8 +1,9 @@
-%li{class: "#{'closed' if task.closed?}"}
+%li.task{class: "#{'closed' if task.closed?}"}
 	.timer
+		.timespent{data: {id: task.id, time_spent: task.time_spent, started: task.started?.to_s}}
 		- if task.closed?
-			= link_to 'Open', open_user_task_path(@user, task), method: :patch, class: "open"
+			= link_to 'Open', open_user_task_path(@user, task), method: :patch, :remote => true, "data-type" => :json, class: "open-task"
 		- else
-			= link_to 'Complete', close_user_task_path(@user, task), method: :patch, class: "complete"
+			= link_to 'Complete', close_user_task_path(@user, task), method: :patch, :remote => true, "data-type" => :json, class: "complete-task"
 	=task.title
 	= link_to "delete", user_task_path(@user, task), method: :delete, data: { confirm: "You sure?" }, title: task.title, class: "delete"
