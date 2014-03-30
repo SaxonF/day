@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 		if self.last_day.nil?
       return false
     else
-      self.last_day < DateTime.now
+      self.last_day < DateTime.now.in_time_zone(Time.zone).beginning_of_day ? false : true
     end
 	end
 

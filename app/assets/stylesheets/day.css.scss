@@ -53,7 +53,7 @@ header.day-header{
 			.complete-task, .open-task{
 				font-size:18px;
 				color:$timerColor;
-				display:block;
+				display:none;
 				&:hover{
 					color:$headerColor;
 				}
