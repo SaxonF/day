@@ -1,6 +1,6 @@
 %li.task{class: "#{'closed' if task.closed?}"}
 	.timer
-		.timespent{data: {id: task.id, time_spent: task.time_spent, started: task.started?.to_s}}
+		.timespent{data: {id: task.id, time_spent: task.time_spent, started: task.started?.to_s, user: @user.name}}
 		- if task.closed?
 			= link_to 'Open', open_user_task_path(@user, task), method: :patch, :remote => true, "data-type" => :json, class: "open-task"
 		- else

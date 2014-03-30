@@ -29,7 +29,7 @@ function saveTimer(timer){
 	$.ajax({
 		type:'PATCH', 
 		dataType: "json",
-		url: document.URL + '/tasks/' + timer.data('id') + '/update_time_spent', 
+		url: timer.data('user') + '/tasks/' + timer.data('id') + '/update_time_spent', 
 		data: {total: timer.runner('info').time}
 	});
 }

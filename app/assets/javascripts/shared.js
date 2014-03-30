@@ -16,9 +16,18 @@ $(function(){
 
 
     // setup our task slider
+
+    var index = 0, hash = window.location.hash;
+
+    if (hash) {
+        index = /\d+/.exec(hash)[0];
+        index = (parseInt(index) || 1) - 1;
+    }
+
     $(".cover-tasks").flexslider({
         directionNav: false,
         slideshow: false,
+        startAt: index,
         before: function(slider){
             $timer = $($(slider).find('li')[slider.currentSlide]);
             if (!$timer.is(".closed")){
@@ -26,6 +35,7 @@ $(function(){
             }
         },
         after: function(slider){
+            window.location.hash = slider.currentSlide+1;
             $timer = $($(slider).find('li')[slider.currentSlide]);
             if (!$timer.is(".closed")){
                 $timer.find('.timespent').runner('start');
