@@ -1,5 +1,7 @@
 body.day{
 	height:100%;
+	background:#199606;
+	color:white;
 	.wrap, .page-content{
 		height:100%;
 	}
@@ -12,8 +14,9 @@ header.day-header{
 	z-index:100;
 	padding-top:30px;
 	h1{
-		font-size:16px;
+		font-size:1em;
 		@include body-font;
+		color:white;
 	}
 }
 .cover-tasks{
@@ -28,35 +31,42 @@ header.day-header{
 	top:0;
 	bottom:0;
 	overflow:hidden;
-	ul.tasks{
-		width:4000px;
+	ul.day-tasks{
 		font-size: 36px;
 		font-size: 2rem;
 		border:none;
+		width:600px;
+		margin:0 auto;	
 		li{
-			width:100%;
 			float:left;
+			text-align: center;
 			border:none;
 			.timer{
 				width:110px;
 				height:110px;
-				border:6px solid $timerColor;
 				border-radius:110px;
 				margin:0 auto 20px;
-				line-height:98px;
+				line-height:110px;
 				font-size:18px;
+				position:relative;
 				color:$timerColor;
+				div:first-child{
+					position:absolute;	
+					left:0;
+					top:0;
+				}
 			}
 			.delete{
 				display:none;
 			}
 			.complete-task, .open-task{
-				font-size:18px;
-				color:$timerColor;
 				display:none;
 				&:hover{
 					color:$headerColor;
 				}
+			}
+			&.closed{
+				text-decoration: line-through;
 			}
 		}
 	}
@@ -85,4 +95,8 @@ header.day-header{
 		}
 		
 	}
+}
+
+canvas{
+
 }

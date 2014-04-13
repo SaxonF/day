@@ -1,15 +1,79 @@
+body.welcome{
+	background:#199606;
+}
+
+#welcome-header{
+	h1{
+		color:white;
+		span{
+			color:#0b5000;
+		}
+	}
+}
+
 ul.tasks{
 	list-style-type:none;
-	text-align:center;
+	text-align:left;
 	margin:0;
 	padding:0;
-	border-top:1px solid rgba(0,0,0,.05);
+	position:relative;
+	&:before{
+		content:"";
+		height:1px;
+		position:absolute;
+		left:-1000px;
+		right:0;
+		background:rgba(0,0,0,.1);
+		width:3000px;
+		top:0;
+	}
+	&:after{
+		content:"";
+		height:1px;
+		position:absolute;
+		left:-1000px;
+		right:0;
+		background:rgba(0,0,0,.1);
+		width:3000px;
+		bottom:0;
+	}
 	li{
-		padding:1em 0;
+		padding:27px 0;
 		margin:0;
-		border-bottom:1px solid rgba(0,0,0,.05);
+		color:white;
+		position:relative;
+		&:before{
+			content:"";
+			height:1px;
+			position:absolute;
+			left:-1000px;
+			right:0;
+			background:rgba(0,0,0,.1);
+			width:3000px;
+			bottom:0;
+		}
+		h5{
+			color:white;
+			float:left;
+			font-size: 21px;
+			font-size: 1.16667rem; /* 21 / 18 = 1.1667 */
+			margin:0;
+		}
+		.time{
+			float:right;
+			font-size: 21px;
+			font-size: 1.16667rem; /* 21 / 18 = 1.1667 */
+			color:white;
+			font-weight:bold;
+		}
 		&.closed{
 			text-decoration: line-through;
+		}
+		.task-form{
+			input{
+				background:none;
+				color:white;
+			}
 		}
 	}
 }

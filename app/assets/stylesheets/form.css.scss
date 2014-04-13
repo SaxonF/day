@@ -1,18 +1,18 @@
 form{
 	::-webkit-input-placeholder {
-	   color: #ccc !important;
+	   color: #0e5c01 !important;
 	}
 
 	:-moz-placeholder { /* Firefox 18- */
-	   color: #ccc !important;  
+	   color: #0e5c01 !important;  
 	}
 
 	::-moz-placeholder {  /* Firefox 19+ */
-	   color: #ccc !important;  
+	   color: #0e5c01 !important;  
 	}
 
 	:-ms-input-placeholder {  
-	   color: #ccc !important;  
+	   color: #0e5c01 !important;  
 	}
 }
 
@@ -20,14 +20,19 @@ form.task-form{
 	.field{
 		input[type=text]{
 			display:block;
+			@include body-font;
 			width:100%;
-			padding:1em 0;
+			padding:27px 0;
 			border:none;
-			text-align: center;
+			text-align: left;
 			font-size:21px;
 			position:relative;
 			font-weight:normal;
+			background:none;
 			text-rendering: optimizeLegibility;
+			-webkit-font-smoothing: antialiased !important;
+			font-smooth: always !important;
+			color:white;
 			&:focus{
 				outline:none;
 			}

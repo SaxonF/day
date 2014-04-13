@@ -10,5 +10,5 @@
   %h2.yesterday.day= link_to @today.yesterday.strftime("%A"), user_path(@user, day: @today.yesterday)
   %h2.tomorrow.day= link_to @today.tomorrow.strftime("%A"), user_path(@user, day: @today.tomorrow)
 .cover-tasks
-  %ul.tasks.slides
+  %ul.day-tasks.slides
     = render @tasks

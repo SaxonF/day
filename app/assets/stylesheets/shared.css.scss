@@ -2,17 +2,22 @@
 
 #countdown{
   span.n{
-    background:#666;
-    color:white;
+    background:white;
+    color:#199606;
     display:inline-block;
-    height:34px;
-    width:26px;
-    line-height: 34px;
+    height:44px;
+    width:32px;
+    line-height: 44px;
     text-align: center;
-    font-size:14px;
     position: relative;
     border-radius:2px;
     margin:0 1px;
+    &:nth-child(odd){
+      margin-right:5px;
+    }
+    &:nth-child(even){
+      margin-left:5px;
+    }
   }
   span.overtime{
     display:none;
@@ -40,10 +45,27 @@
   -o-user-select: none;
   user-select: none; 
   background:#aaa;
-  font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
-  font-size:16px;
+  @include body-font;
+  &.button-border{
+    color:#0a4900;
+    border:2px solid #0a4900;
+    background:none;
+    font-weight:normal;
+    padding:20px 46px 24px 46px;
+    &:hover{
+      background:#0a4900;
+      color:#199606;
+    }
+  }
 }
 
 .hide{
   display:none;
+}
+
+/**** Clearfix ****/
+.clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
 }

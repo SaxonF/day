@@ -30,6 +30,8 @@ body {
 	word-wrap: break-word;
 	color: #444444;
 	@include body-font;
+	-webkit-font-smoothing: antialiased !important;
+	font-smooth: always !important;
 }
 
 

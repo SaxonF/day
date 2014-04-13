@@ -1,11 +1,14 @@
 - provide(:body, "welcome") 
-%header.page-header
+%header#welcome-header.page-header
   %h1 
     Hi Saxon, 
     %span Welcome to #{@today.strftime("%A")}
 %section.day-setup
   .container
     %ul.tasks.epsilon
-      = render @tasks
-    = render '/shared/task_form'
-    = link_to "Start Your Day", start_day_user_path, method: :patch, class: "button"
+      - @tasks.each do |task|
+        %li.task.clearfix{class: "#{'closed' if task.closed?}"}
+          %h5= task.title
+          %span.time= task.time_spent
+      = render '/shared/task_form'
+    = link_to "Start Your Day", start_day_user_path, method: :patch, class: "button button-border delta"

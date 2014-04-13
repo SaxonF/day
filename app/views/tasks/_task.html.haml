@@ -1,5 +1,7 @@
 %li.task{class: "#{'closed' if task.closed?}"}
+
 	.timer
+		.complete-circle{data: {width: "110", height: "110", value: "39", fgColor: "#ffffff", bgColor: "#0c5e00", thickness: ".2"}}
 		.timespent{data: {id: task.id, time_spent: task.time_spent, started: task.started?.to_s, user: @user.name}}
 		- if task.closed?
 			= link_to 'Open', open_user_task_path(@user, task), method: :patch, :remote => true, "data-type" => :json, class: "open-task"
